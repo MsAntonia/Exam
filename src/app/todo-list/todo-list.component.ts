@@ -49,28 +49,4 @@ export class TodoListComponent implements OnInit {
   fromChildComponent():void{
     console.log(`From Child`);
   }
-
-  // toggleCompleted(id:number):void{
-  //   this.dataSource.toggleCompleted(id);
-
-  // }
-
-  // deleteTask(event,id:number):void{
-  //   event.preventDefault();
-  //   this.dataSource.deleteTask(id),
-  //                 //    .subscribe((status: any)=>{
-  //                 //    console.log (status)
-  //                 //    this.getTasks(); 
-  //                 //  },
-  //                  (err: any)=>console.log(err),
-  //                  ()=>console.log('task deleted');
-  // }
-  
-  // addTask(el:any):void{
-  //   if(el: any.value.trim().length>0){
-  //     let newTask:Task = new Task(this.tasks.length+1, el.value,false,Date.now());
-  //     this.dataSource.addTask(newTask);
-
-  //   }
-  // }
 }
