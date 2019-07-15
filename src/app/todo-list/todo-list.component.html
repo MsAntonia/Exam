@@ -1,0 +1,88 @@
+<!-- <div class="form-inline d-block mt-3 mb-3">
+    <input type= "text"
+           class= "form-control d-inline block" 
+           placeholder= "Add new task"
+           #todoTitle>
+           <button class="btn btn-primary"
+           (click)="addTask(todoTitle)">
+           Add
+           </button>
+           <a routerLink="/removed"
+              class= "btn btn-success">
+              Archive
+            </a>
+        </div> -->
+        <body [style.font-family]="'Arial Narrow'">   
+<div class="row">
+   <div class="col-sm-8">
+        <!-- <h1 [ngStyle]="{'color': 'black', 'font-size': '34px'}"> -->
+                <h1>
+                 {{ title }} </h1>
+        <a class= "btn btn-secondary m-2" 
+           routerLink="/add-new">
+           Add New
+        </a>
+        
+        <div class="list-group" > 
+         <a *ngFor="let task of tasks" 
+               class="list-group-item list-group-item-action border-warning shadow p-2 mb-2 bg-white rounded"
+               (click)="onSelectTask(task._id)"
+               [class.active]="task === selectedTask">  
+                
+            <button class="close ml-4 text-dark pa-2 "
+                 (click)="deleteTask($event,task._id)">
+                 &times;
+            </button>
+            <!-- <small class="float-right">
+                    *created
+              </small> -->
+               <h4>
+                    <input type="checkbox"
+                    [checked] = "task.completed"
+                    [disabled]="true">
+                    <!-- (change)="toggleCompleted(task._id)">  -->
+                   {{task.title}} 
+                   <small class="float-right" >
+                    
+                    
+                     {{task.created|date:format:'dd.mm.yyyy'}} 
+                     <p   class="float-right" style = "font-size:14px">
+                         
+                            *created 
+                            </p>
+                         
+                        </small>
+                   
+                </h4>
+                        
+                
+              <!-- <span 
+                  [ngClass]= "task.completed? 'del':''">
+                   {{task.title}}         
+                       
+            </span>  -->
+              
+         
+                 <!-- <p>
+                  <span class= "badge badge-success float-right">
+                      {{task.completed}}
+                  </span>
+              </p> -->
+            
+         </a>
+         
+       </div>
+    </div>
+       <div class = "col-sm-4 "
+           *ngIf="selectedTask">
+           <app-task-details 
+                [selected-task]="selectedTask"
+                 (taskUpdated) ="getTasks()">  
+         </app-task-details>
+       </div> 
+    </div> 
+<p *ngIf="message">{{message}}</p>
+</body>
+
+
+
